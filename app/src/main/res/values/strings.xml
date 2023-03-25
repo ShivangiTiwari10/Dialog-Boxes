@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dialogue Boxes</string>
+    <string name="basic_alert">Basic Alert</string>
 </resources>
