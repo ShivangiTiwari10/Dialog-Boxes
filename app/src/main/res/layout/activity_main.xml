@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:text="@string/basic_alert"
-        android:textSize="20sp"
         android:backgroundTint="#B84F4F"
+        android:text="@string/basic_alert"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +25,19 @@
     <Button
         android:id="@+id/btnAlertWithIconsAndCustomize"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:layout_height="wrap_content"
         android:backgroundTint="#55601B"
-
         android:text="@string/with_icon_and_customization" />
 
-
+    <Button
+        android:id="@+id/btnAlertWithItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#3B8111"
+        android:text="@string/with_items" />
 
 
 </LinearLayout>
