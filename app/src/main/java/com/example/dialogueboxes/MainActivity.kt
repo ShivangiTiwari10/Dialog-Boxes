@@ -31,12 +31,14 @@ class MainActivity : AppCompatActivity() {
         ).show()
     }
 
+
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        1.Basic alert Dialog
         binding.basicAlert.setOnClickListener {
             val builder = AlertDialog.Builder(this)
 
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-//        Alert Dialog With Icons and Customisation
+//        2.Alert Dialog With Icons and Customisation
 
         binding.btnAlertWithIconsAndCustomize.setOnClickListener {
             val builder = AlertDialog.Builder(this)
@@ -77,8 +79,30 @@ class MainActivity : AppCompatActivity() {
                 setTextColor(Color.WHITE)
             }
         }
+        binding.btnAlertWithItems.setOnClickListener {
+            withItems()
+
+        }
     }
 
+//   3. Alert Dialog With Items
 
+
+    private fun withItems() {
+
+        val items = arrayOf("Red", "Orange", "Yellow", "Blue")
+        val builder = AlertDialog.Builder(this)
+        with(builder)
+        {
+            setTitle("List of Items")
+            setItems(items) { dialog, which ->
+                Toast.makeText(applicationContext, items[which] + " is clicked", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            setPositiveButton("OK", positiveButtonClick)
+            show()
+        }
+    }
 
 }
