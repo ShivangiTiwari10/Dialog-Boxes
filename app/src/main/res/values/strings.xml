@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dialogue Boxes</string>
     <string name="basic_alert">Basic Alert</string>
+    <string name="with_icon_and_customization">WITH ICON AND CUSTOMIZATION</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.example.dialogueboxes
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         ).show()
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -51,8 +54,31 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+//        Alert Dialog With Icons and Customisation
 
+        binding.btnAlertWithIconsAndCustomize.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            with(builder) {
+                setTitle("It will make Call")
+                setMessage("Do You want to call Someone")
+                setPositiveButton("OK", null)
+                setNegativeButton("CANCEL", null)
+                setNeutralButton("NEUTRAL", null)
+                setPositiveButtonIcon(resources.getDrawable(android.R.drawable.ic_menu_call, theme))
+                setIcon(resources.getDrawable(android.R.drawable.ic_dialog_alert, theme))
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
 
+            val button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
+            with(button) {
+                setBackgroundColor(getColor(R.color.teal_200))
+                setPadding(0, 0, 20, 0)
+                setTextColor(Color.WHITE)
+            }
+        }
     }
+
+
 
 }
