@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.dialogueboxes.databinding.ActivityMainBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -83,10 +85,13 @@ class MainActivity : AppCompatActivity() {
             withItems()
 
         }
+
+        binding.btnAlertWithMultiChoiceList.setOnClickListener {
+            withMultiChoiceList()
+        }
     }
 
 //   3. Alert Dialog With Items
-
 
     private fun withItems() {
 
@@ -103,6 +108,42 @@ class MainActivity : AppCompatActivity() {
             setPositiveButton("OK", positiveButtonClick)
             show()
         }
+    }
+
+    //    4. Alert Dialog With MultiChoice List
+    private fun withMultiChoiceList() {
+
+        val items = arrayOf("Microsoft", "Apple", "Amazon", "Google")
+        val selectedList = ArrayList<Int>()
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("This is list choice dialog box")
+        builder.setMultiChoiceItems(
+            items, null
+        ) { dialog, which, isChecked ->
+            if (isChecked) {
+                selectedList.add(which)
+            } else if (selectedList.contains(which)) {
+                selectedList.remove(Integer.valueOf(which))
+            }
+        }
+
+        builder.setPositiveButton("DONE") { dialogInterface, i ->
+            val selectedStrings = ArrayList<String>()
+
+            for (j in selectedList.indices) {
+                selectedStrings.add(items[selectedList[j]])
+            }
+
+            Toast.makeText(
+                applicationContext,
+                "Items selected are: " + Arrays.toString(selectedStrings.toTypedArray()),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        builder.show()
+
     }
 
 }
