@@ -2,7 +2,9 @@ package com.example.dialogueboxes
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextThemeWrapper
@@ -42,6 +44,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btn1.setOnClickListener {
+
+
+            val builder = AlertDialog.Builder(this)
+
+            builder.setTitle("Are You Sure?")
+            builder.setMessage("Do You want to Make Call")
+            builder.setIcon(R.drawable.ic_baseline_call_24)
+            builder.setPositiveButton("Yes") { _, i ->
+
+                val callIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:5551234"))
+                startActivity(callIntent)
+            }
+
+            builder.setNegativeButton("No") { _, i ->
+                finish()
+            }
+            builder.show()
+
+        }
 
 //        1.Basic alert Dialog
         binding.basicAlert.setOnClickListener {
@@ -103,9 +126,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnCentered.setOnClickListener {
             withButtonCentered()
+
+            withEditText()
+
         }
 
-        withEditText()
 
     }
 
