@@ -94,6 +94,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnAlertWithStyle.setOnClickListener {
             withStyle()
         }
+
+        binding.btnWithCustomStyle.setOnClickListener {
+            withCustomStyle()
+        }
     }
 
 //   3. Alert Dialog With Items
@@ -168,5 +172,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+//    6. Alert Dialog With Custom Style
+    fun withCustomStyle() {
+
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogCustom))
+
+        with(builder)
+        {
+            setTitle("Android Alert with customStyle")
+            setMessage("We have a message")
+            setPositiveButton("OK", DialogInterface.OnClickListener(function = positiveButtonClick))
+            setNegativeButton("No", negativeButtonClick)
+            setNeutralButton("Maybe", neutralButtonClick)
+            show()
+        }
+
+    }
 
 }
