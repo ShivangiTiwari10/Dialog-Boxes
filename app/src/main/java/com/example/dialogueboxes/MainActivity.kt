@@ -109,6 +109,8 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnAlertWithItems.setOnClickListener {
             withItems()
+//            3.1 --
+            withSingleChoiceItem()
 
         }
 
@@ -151,6 +153,34 @@ class MainActivity : AppCompatActivity() {
             setPositiveButton("OK", positiveButtonClick)
             show()
         }
+    }
+
+//    3.1 Alert Dialog With SingleChoice Items Items
+
+    private fun withSingleChoiceItem() {
+
+        val sweets = arrayOf("Gulab ja mun", "Peta", "Ras Mali")
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("Which is your favourite Sweet")
+        builder.setSingleChoiceItems(
+            sweets,
+            0,
+            DialogInterface.OnClickListener { dialogInterface, i ->
+
+                Toast.makeText(this, "You clicked on ${sweets[i]}", Toast.LENGTH_SHORT).show()
+
+            })
+        builder.setPositiveButton(
+            "submit",
+            DialogInterface.OnClickListener { dialogInterface, i -> })
+
+        builder.setNegativeButton(
+            "Decline",
+            DialogInterface.OnClickListener { dialogInterface, i -> })
+
+
+        builder.show()
     }
 
     //    4. Alert Dialog With MultiChoice List
@@ -258,9 +288,15 @@ class MainActivity : AppCompatActivity() {
         val inflater = layoutInflater
         builder.setTitle("With EditText")
         val dialogLayout = inflater.inflate(R.layout.dialog_edittext, null)
-        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
+        val editText = dialogLayout.findViewById<EditText>(R.id.editText)
         builder.setView(dialogLayout)
-        builder.setPositiveButton("OK") { dialogInterface, i -> Toast.makeText(applicationContext, "EditText is " + editText.text.toString(), Toast.LENGTH_SHORT).show() }
+        builder.setPositiveButton("OK") { dialogInterface, i ->
+            Toast.makeText(
+                applicationContext,
+                "EditText is " + editText.text.toString(),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
         builder.show()
     }
 }
