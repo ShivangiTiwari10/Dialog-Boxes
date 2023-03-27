@@ -6,6 +6,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextThemeWrapper
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.dialogueboxes.databinding.ActivityMainBinding
@@ -98,6 +99,11 @@ class MainActivity : AppCompatActivity() {
         binding.btnWithCustomStyle.setOnClickListener {
             withCustomStyle()
         }
+
+        binding.btnCentered.setOnClickListener {
+            withButtonCentered()
+        }
+
     }
 
 //   3. Alert Dialog With Items
@@ -173,7 +179,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//    6. Alert Dialog With Custom Style
+    //    6. Alert Dialog With Custom Style
     fun withCustomStyle() {
 
         val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogCustom))
@@ -190,4 +196,29 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+//    7. Alert Dialog With Button Centered
+
+    fun withButtonCentered() {
+
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setTitle("Alert")
+        alertDialog.setMessage("Are you sure?")
+
+        alertDialog.setButton(
+            AlertDialog.BUTTON_POSITIVE, "Yes"
+        ) { dialog, which -> dialog.dismiss() }
+
+        alertDialog.setButton(
+            AlertDialog.BUTTON_NEGATIVE, "No"
+        ) { dialog, which -> dialog.dismiss() }
+        alertDialog.show()
+
+        val btnPositive = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val btnNegative = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+
+        val layoutParams = btnPositive.layoutParams as LinearLayout.LayoutParams
+        layoutParams.weight = 10f
+        btnPositive.layoutParams = layoutParams
+        btnNegative.layoutParams = layoutParams
+    }
 }
