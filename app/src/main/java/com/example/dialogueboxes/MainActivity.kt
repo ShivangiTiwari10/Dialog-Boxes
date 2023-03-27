@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.dialogueboxes.databinding.ActivityMainBinding
@@ -89,6 +90,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnAlertWithMultiChoiceList.setOnClickListener {
             withMultiChoiceList()
         }
+
+        binding.btnAlertWithStyle.setOnClickListener {
+            withStyle()
+        }
     }
 
 //   3. Alert Dialog With Items
@@ -145,5 +150,23 @@ class MainActivity : AppCompatActivity() {
         builder.show()
 
     }
+
+    //   5. Alert Dialog With Style
+    fun withStyle() {
+
+        val builder =
+            AlertDialog.Builder(ContextThemeWrapper(this, android.R.style.Holo_SegmentedButton))
+
+        with(builder)
+        {
+            setTitle("Androidly Alert")
+            setMessage("We have a message")
+            setPositiveButton("OK", DialogInterface.OnClickListener(function = positiveButtonClick))
+            setNegativeButton("No", negativeButtonClick)
+            setNeutralButton("Maybe", neutralButtonClick)
+            show()
+        }
+    }
+
 
 }
