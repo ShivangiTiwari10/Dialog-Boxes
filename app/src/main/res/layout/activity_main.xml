@@ -74,13 +74,7 @@
         android:backgroundTint="#1D96A6"
         android:text="@string/with_button_center" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="@string/enter_the_text_here"
-        android:autofillHints="name"
-        android:inputType="text" />
+
+
 
 </LinearLayout>
