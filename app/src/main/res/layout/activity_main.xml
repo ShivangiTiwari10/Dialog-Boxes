@@ -56,6 +56,15 @@
         android:text="@string/with_style" />
 
 
+    <Button
+        android:id="@+id/btnWithCustomStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#1D96A6"
+        android:text="@string/with_custom_style" />
+
+
 
 
 </LinearLayout>

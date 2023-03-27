@@ -5,4 +5,5 @@
     <string name="with_items">WITH ITEMS</string>
     <string name="with_multi_choice_list">WITH MULTI CHOICE LIST</string>
     <string name="with_style">with Style</string>
+    <string name="with_custom_style">With Custom Style</string>
 </resources>
