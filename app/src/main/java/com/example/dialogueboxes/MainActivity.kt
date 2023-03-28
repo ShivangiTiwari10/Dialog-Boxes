@@ -246,8 +246,8 @@ class MainActivity : AppCompatActivity() {
 
 
         builder.setTitle("Android Alert with customStyle")
-        builder.setMessage("We have a message")
-        builder.setPositiveButton("OK") { _, i ->
+        builder.setMessage("Do you want to participate on quiz?")
+        builder.setPositiveButton("Yes") { _, i ->
             val intent = Intent(this, Questions::class.java)
             startActivity(intent)
         }
