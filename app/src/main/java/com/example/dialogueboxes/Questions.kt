@@ -1,6 +1,8 @@
 package com.example.dialogueboxes
 
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -18,14 +20,17 @@ class Questions : AppCompatActivity() {
 
 
         binding.question1.setOnClickListener {
-            val options = arrayOf("Python", "Java", "Kotlin","C++")
+            val options = arrayOf("Python", "Java", "Kotlin", "C++")
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Which is your favourite Language?")
-            builder.setSingleChoiceItems(options,0,DialogInterface.OnClickListener { dialogInterface, i ->
+            builder.setSingleChoiceItems(
+                options,
+                0,
+                DialogInterface.OnClickListener { dialogInterface, i ->
 
-                Toast.makeText(this, "You clicked on ${options[i]}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "You clicked on ${options[i]}", Toast.LENGTH_SHORT).show()
 
-            })
+                })
             builder.setPositiveButton(
                 "submit",
                 DialogInterface.OnClickListener { dialogInterface, i -> })
@@ -73,6 +78,24 @@ class Questions : AppCompatActivity() {
             builder.show()
 
         }
+
+        binding.exit.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+
+            builder.setTitle("Are You Sure?")
+            builder.setMessage("Do You want to exit?")
+            builder.setIcon(R.drawable.ic_baseline_exit_to_app_24)
+            builder.setPositiveButton("Yes") { _, i ->
+
+                finish()
+            }
+
+            builder.setNegativeButton("No") { _, i ->
+              Toast.makeText(this,"you clicked on no",Toast.LENGTH_SHORT).show()
+            }
+            builder.show()
+        }
+
         setContentView(binding.root)
     }
 }
