@@ -1,8 +1,7 @@
 package com.example.dialogueboxes
 
+import android.app.Dialog
 import android.content.DialogInterface
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,9 +13,14 @@ import kotlin.collections.ArrayList
 class Questions : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuestionsBinding
+    private lateinit var dialog: Dialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionsBinding.inflate(layoutInflater)
+
+        dialog = Dialog(this)
+        dialog.setContentView(R.layout.custom_dialog)
 
 
         binding.question1.setOnClickListener {
@@ -86,14 +90,17 @@ class Questions : AppCompatActivity() {
             builder.setMessage("Do You want to exit?")
             builder.setIcon(R.drawable.ic_baseline_exit_to_app_24)
             builder.setPositiveButton("Yes") { _, i ->
-
+                dialog.dismiss()
                 finish()
             }
 
             builder.setNegativeButton("No") { _, i ->
-              Toast.makeText(this,"you clicked on no",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "you clicked on no", Toast.LENGTH_SHORT).show()
             }
             builder.show()
+        }
+        binding.cutumiseBox.setOnClickListener {
+            dialog.show()
         }
 
         setContentView(binding.root)
