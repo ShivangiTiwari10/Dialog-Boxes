@@ -12,6 +12,8 @@
     <string name="qiz_of_technology">Qiz of Technology</string>
     <string name="which_is_your_faveratue_language">which is your favourite language ?</string>
     <string name="quetion_1">Quetion 1</string>
+    <string name="exit">Exit</string>
+    <string name="question_2">Question 2</string>
 
 
 </resources>
