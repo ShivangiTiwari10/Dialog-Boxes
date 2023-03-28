@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.dialogueboxes.databinding.ActivityQuestionsBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Questions : AppCompatActivity() {
 
@@ -34,6 +36,42 @@ class Questions : AppCompatActivity() {
 
 
             builder.show()
+        }
+
+        binding.question2.setOnClickListener {
+
+
+            val items = arrayOf("Data security", "Data integrity", "Data independence", "All")
+            val selectedList = ArrayList<Int>()
+            val builder = AlertDialog.Builder(this)
+
+            builder.setTitle("Which of the following is handled by DBMS?")
+            builder.setMultiChoiceItems(
+                items, null
+            ) { dialog, which, isChecked ->
+                if (isChecked) {
+                    selectedList.add(which)
+                } else if (selectedList.contains(which)) {
+                    selectedList.remove(Integer.valueOf(which))
+                }
+            }
+
+            builder.setPositiveButton("DONE") { dialogInterface, i ->
+                val selectedStrings = ArrayList<String>()
+
+                for (j in selectedList.indices) {
+                    selectedStrings.add(items[selectedList[j]])
+                }
+
+                Toast.makeText(
+                    applicationContext,
+                    "Items selected are: " + Arrays.toString(selectedStrings.toTypedArray()),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            builder.show()
+
         }
         setContentView(binding.root)
     }
