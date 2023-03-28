@@ -1,5 +1,6 @@
 package com.example.dialogueboxes
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
@@ -16,12 +17,16 @@ class Questions : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionsBinding
     private lateinit var dialog: Dialog
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionsBinding.inflate(layoutInflater)
 
         dialog = Dialog(this)
         dialog.setContentView(R.layout.custom_dialog)
+
+//     To set drawable background
+        dialog.window?.setBackgroundDrawable(getDrawable(R.drawable.bg_custom_box))
 
 
         binding.question1.setOnClickListener {
