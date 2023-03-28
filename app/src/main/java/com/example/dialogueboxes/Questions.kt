@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.dialogueboxes.databinding.ActivityQuestionsBinding
@@ -99,8 +100,15 @@ class Questions : AppCompatActivity() {
             }
             builder.show()
         }
+//        val btnToDo = dialog.findViewById<Button>(R.id.button2)
+
         binding.cutumiseBox.setOnClickListener {
             dialog.show()
+        }
+//        to Axis custom_Dialog layot Items
+        val btnToDo = dialog.findViewById<Button>(R.id.button2)
+        btnToDo.setOnClickListener {
+            Toast.makeText(this,"U Click ToDo",Toast.LENGTH_SHORT).show()
         }
 
         setContentView(binding.root)
