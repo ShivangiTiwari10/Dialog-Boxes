@@ -14,6 +14,10 @@
     <string name="quetion_1">Quetion 1</string>
     <string name="exit">Exit</string>
     <string name="question_2">Question 2</string>
+    <string name="todo">ToDo</string>
+    <string name="how_is_the_android_app_dev_journey_going">how is the android app Dev Journey Going?</string>
+    <string name="congratulations_for_showing_up_today">congratulations For showing up today!</string>
+    <string name="send_feedback">Send FeedBack</string>
 
 
 </resources>
