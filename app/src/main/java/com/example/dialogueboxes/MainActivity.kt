@@ -124,6 +124,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnWithCustomStyle.setOnClickListener {
             withCustomStyle()
+
+
         }
 
         binding.btnCentered.setOnClickListener {
@@ -242,17 +244,18 @@ class MainActivity : AppCompatActivity() {
 
         val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogCustom))
 
-        with(builder)
-        {
-            setTitle("Android Alert with customStyle")
-            setMessage("We have a message")
-            setPositiveButton("OK", DialogInterface.OnClickListener(function = positiveButtonClick))
-            setNegativeButton("No", negativeButtonClick)
-            setNeutralButton("Maybe", neutralButtonClick)
-            show()
-        }
 
+        builder.setTitle("Android Alert with customStyle")
+        builder.setMessage("We have a message")
+        builder.setPositiveButton("OK") { _, i ->
+            val intent = Intent(this, Questions::class.java)
+            startActivity(intent)
+        }
+        builder.setNegativeButton("No", negativeButtonClick)
+        builder.setNeutralButton("Maybe", neutralButtonClick)
+        builder.show()
     }
+
 
 //    7. Alert Dialog With Button Centered
 
